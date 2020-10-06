@@ -21,6 +21,7 @@
 #define BlueGrey        0x8D15      // 143, 163, 173
 #define White           0xFFFF      // 255, 255, 255
 
+
 //Light
 #define LRed            0xFD34      // 255, 164, 162
 #define LPink           0xFCB8      // 255, 148, 194
@@ -62,3 +63,28 @@
 #define DBrown          0x72CA      // 113, 90, 82
 #define DGrey           0xAD75      // 174, 174, 174
 #define DBlueGrey       0x63AF      // 97, 116, 126
+
+
+/*
+convert hex color value to (r,g,b) format
+usage:
+color.value = Red;
+color.color(color.rgb.R, color.rgb.G, color.rgb.B)
+*/
+struct RGB_COLOR {
+    byte R;
+    byte G;
+    byte B;
+};
+
+union COLOR{
+    RGB_COLOR rgb;
+    unsigned int value;
+} color;
+
+// B=26046; R=58814; == 1024 * 32
+
+/* anggap 32 led
+led1 = B+1024
+led2 = 1024*2, 
+*/
