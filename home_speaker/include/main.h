@@ -55,11 +55,12 @@ Adafruit_NeoPixel Led_Array[BAND] = {led_band_1, led_band_2, led_band_3, led_ban
 
 void color_monitor(uint8_t color_value){
     COLOR_MONITOR.value = color_value;
-    Serial.print("Red: ");
-    Serial.println(COLOR_MONITOR.rgb.R);
-    Serial.print("Green: ");
-    Serial.println(COLOR_MONITOR.rgb.G);
-    Serial.print("Blue: ");
+    Serial.println("");
+    Serial.print("   Red: ");
+    Serial.print(COLOR_MONITOR.rgb.R);
+    Serial.print("   Green: ");
+    Serial.print(COLOR_MONITOR.rgb.G);
+    Serial.print("   Blue: ");
     Serial.println(COLOR_MONITOR.rgb.B);
 }
 

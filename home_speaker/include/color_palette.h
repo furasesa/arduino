@@ -65,16 +65,21 @@
 #define DBlueGrey       0x63AF      // 97, 116, 126
 
 
+#define BLUE            0X2196f3
+#define RED             0xF44336
+
 /*
 convert hex color value to (r,g,b) format
 usage:
 color.value = Red;
 color.color(color.rgb.R, color.rgb.G, color.rgb.B)
+R-B = 16007990 - 2201331 = 13806659 / 30 = 460.221
 */
 struct RGB_COLOR {
     byte R;
     byte G;
     byte B;
+    byte A;
 };
 
 union COLOR{
@@ -82,9 +87,12 @@ union COLOR{
     unsigned int value;
 } color;
 
-// B=26046; R=58814; == 1024 * 32
-
-/* anggap 32 led
-led1 = B+1024
-led2 = 1024*2, 
-*/
+uint8_t getRed(uint32_t c){
+    return c >> 16;
+}
+uint8_t getGreen(uint32_t c){
+    return c >> 8;
+}
+uint8_t getBlue(uint32_t c){
+    return c;
+}

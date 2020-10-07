@@ -13,5 +13,5 @@ LED WS2818
 #define DELAYVAL            500     // Time (in milliseconds) to pause between pixels
 
 //  Calculation
-#define LENGTH_LEVEL        COLOR_DIFF_LEVEL*NUMPIXELS
+#define LENGTH_LEVEL        30
 
