@@ -1,3 +1,4 @@
+// RGB565 8 bit, for LCD
 // Google material                     R     G    B
 #define Black           0x0000      // 0, 0, 0
 #define Red             0xE38E      // 229, 115, 115
@@ -20,8 +21,6 @@
 #define Grey            0xE71C      // 224, 224, 224
 #define BlueGrey        0x8D15      // 143, 163, 173
 #define White           0xFFFF      // 255, 255, 255
-
-
 //Light
 #define LRed            0xFD34      // 255, 164, 162
 #define LPink           0xFCB8      // 255, 148, 194
@@ -42,7 +41,6 @@
 #define LBrown          0xD5B5      // 209, 83, 173
 // Light Grey is White
 #define LBlueGrey       0xBEBB      // 191, 212, 223
-
 //Dark
 #define DRed            0xAA29      // 175, 68, 72
 #define DPink           0xB96C      // 186, 45, 101
@@ -64,7 +62,7 @@
 #define DGrey           0xAD75      // 174, 174, 174
 #define DBlueGrey       0x63AF      // 97, 116, 126
 
-
+// RGB 32 bit, LED WS2818
 #define BLUE            0X2196f3
 #define RED             0xF44336
 
@@ -73,7 +71,7 @@ convert hex color value to (r,g,b) format
 usage:
 color.value = Red;
 color.color(color.rgb.R, color.rgb.G, color.rgb.B)
-R-B = 16007990 - 2201331 = 13806659 / 30 = 460.221
+bug blue color always 0
 */
 struct RGB_COLOR {
     byte R;
@@ -87,6 +85,9 @@ union COLOR{
     unsigned int value;
 } color;
 
+/*
+Convert hex color to RGB
+*/
 uint8_t getRed(uint32_t c){
     return c >> 16;
 }

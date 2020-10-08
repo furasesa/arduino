@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include <Adafruit_NeoPixel.h>
+#include <WS2818.h>
 #ifdef __AVR__
     #include <avr/power.h> // Required for 16 MHz Adafruit Trinket
 #endif
@@ -14,11 +14,11 @@
     #define STROBE      22
     #define RESET       23
     //  WS2812
-    #define LEDC1       24
-    #define LEDC2       25
-    #define LEDC3       26
-    #define LEDC4       27
-    #define LEDC5       28
+    // #define LEDC1       24
+    // #define LEDC2       25
+    // #define LEDC3       26
+    // #define LEDC4       27
+    // #define LEDC5       28
     //  Analog
     #define MSGEQ7_DATA 59 // A5
 #else
@@ -26,11 +26,11 @@
     #define STROBE      2
     #define RESET       3
     //  WS2812
-    #define LEDC1       4
-    #define LEDC2       5
-    #define LEDC3       6
-    #define LEDC4       7
-    #define LEDC5       8
+    // #define LEDC1       4
+    // #define LEDC2       5
+    // #define LEDC3       6
+    // #define LEDC4       7
+    // #define LEDC5       8
     #ifdef ARDUINO_AVR_UNO
         #define MSGEQ7_DATA 14 // A0
     #elif ARDUINO_AVR_MEGA2560
@@ -43,50 +43,46 @@
 #include <color_palette.h>
 #include <definition.h>
 
-COLOR COLOR_MONITOR;
+Sled spectrum_led(6);
 
-Adafruit_NeoPixel led_band_1(NUMPIXELS, LEDC1, NEO_RGB + NEO_KHZ800);
-Adafruit_NeoPixel led_band_2(NUMPIXELS, LEDC2, NEO_RGB + NEO_KHZ800);
-Adafruit_NeoPixel led_band_3(NUMPIXELS, LEDC3, NEO_RGB + NEO_KHZ800);
-Adafruit_NeoPixel led_band_4(NUMPIXELS, LEDC4, NEO_RGB + NEO_KHZ800);
-Adafruit_NeoPixel led_band_5(NUMPIXELS, LEDC5, NEO_RGB + NEO_KHZ800);
+// WS2818 *spectrum_display;
 
-Adafruit_NeoPixel Led_Array[BAND] = {led_band_1, led_band_2, led_band_3, led_band_4, led_band_5};
+// Adafruit_NeoPixel Led_Array[BAND] = {led_band_1, led_band_2, led_band_3, led_band_4, led_band_5};
 
-void color_monitor(uint8_t color_value){
-    COLOR_MONITOR.value = color_value;
-    Serial.println("");
-    Serial.print("   Red: ");
-    Serial.print(COLOR_MONITOR.rgb.R);
-    Serial.print("   Green: ");
-    Serial.print(COLOR_MONITOR.rgb.G);
-    Serial.print("   Blue: ");
-    Serial.println(COLOR_MONITOR.rgb.B);
-}
+// void color_monitor(uint8_t color_value){
+//     COLOR_MONITOR.value = color_value;
+//     Serial.println("");
+//     Serial.print("   Red: ");
+//     Serial.print(COLOR_MONITOR.rgb.R);
+//     Serial.print("   Green: ");
+//     Serial.print(COLOR_MONITOR.rgb.G);
+//     Serial.print("   Blue: ");
+//     Serial.println(COLOR_MONITOR.rgb.B);
+// }
 
-void led_manager (int column, int current_level){
-    int led_level = (current_level < 5) ? current_level : current_level % 5;
-    if (current_level == 5){
-        for (int i=0; i < 5; i++){
-            int led_pos = current_level-i;
-            color.value = Blue + 1024 * 5;
-            Led_Array[column].setPixelColor(led_pos-i, color.rgb.R, color.rgb.G, color.rgb.B);
-            color_monitor(color.value);
-        }
-    }
-    else{
-        for (int i=0; i < 5; i++){
-            int led_pos = led_level - i;
-            if (led_pos == 0 && current_level > 5){
-                led_pos = 5;
-                // led num 5
-            }
-            else if (led_pos >= 1){
-                color.value = Blue + (1024 * (current_level-i));
-                // value = Blue + (1024 * 10), 9, 8, 7, 6
-                Led_Array[column].setPixelColor(led_pos, color.rgb.R, color.rgb.G, color.rgb.B);
-                color_monitor(color.value);
-            }
-        }
-    }
-}
+// void led_manager (int column, int current_level){
+//     int led_level = (current_level < 5) ? current_level : current_level % 5;
+//     if (current_level == 5){
+//         for (int i=0; i < 5; i++){
+//             int led_pos = current_level-i;
+//             color.value = Blue + 1024 * 5;
+//             Led_Array[column].setPixelColor(led_pos-i, color.rgb.R, color.rgb.G, color.rgb.B);
+//             color_monitor(color.value);
+//         }
+//     }
+//     else{
+//         for (int i=0; i < 5; i++){
+//             int led_pos = led_level - i;
+//             if (led_pos == 0 && current_level > 5){
+//                 led_pos = 5;
+//                 // led num 5
+//             }
+//             else if (led_pos >= 1){
+//                 color.value = Blue + (1024 * (current_level-i));
+//                 // value = Blue + (1024 * 10), 9, 8, 7, 6
+//                 Led_Array[column].setPixelColor(led_pos, color.rgb.R, color.rgb.G, color.rgb.B);
+//                 color_monitor(color.value);
+//             }
+//         }
+//     }
+// }
