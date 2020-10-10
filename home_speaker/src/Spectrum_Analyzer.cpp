@@ -1,10 +1,10 @@
 #include <Spectrum_Analyzer.h>
 
-MSGEQ7::MSGEQ7(uint8_t Strobe, uint8_t Reset, uint8_t Data, uint8_t band){
+MSGEQ7::MSGEQ7(uint8_t Strobe, uint8_t Reset, uint8_t Data, uint8_t Band){
     _str_pin         = Strobe;
     _rst_pin         = Reset;
     _analog_pin      = Data;
-    _msgeq7_band    = band;
+    _msgeq7_band     = Band;
 }
 
 void MSGEQ7::begin(void){

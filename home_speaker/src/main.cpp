@@ -41,10 +41,8 @@ void loop(){
   msgeq7->read();
   data[0] = msgeq7->getData(0);
 
-  led_disp->run();
+  // led_disp->run();
   // led_disp->run()
-
-
 
 
   // double bandd = double(spectrumBand[i]) / double(1024.00);

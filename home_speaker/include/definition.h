@@ -24,7 +24,7 @@ Global Definition. public setting
     #define RESET       3
     #define LD1         4
     #ifdef ARDUINO_AVR_UNO
-        #define MSGEQ7_DATA 14 // A0
+        #define ANALOG_PIN 14 // A0
     #elif ARDUINO_AVR_MEGA2560
         #define ANALOG_PIN 54 // A0
     #endif
