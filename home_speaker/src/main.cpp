@@ -1,11 +1,22 @@
 #include <main.h>
 
-int spectrumBand[BAND];
+
 // spectrum_display = new Adafruit_NeoPixel(NUMPIXELS, LED_WIRE, PIXEL_FORMAT)
+
+MSGEQ7 *msgeq7;
+WS2818 *led_disp;
 
 void setup(){
   Serial.begin(9600);
-  #ifdef __USE_LCD__
+  msgeq7 = new MSGEQ7();
+  led_disp = new WS2818();
+
+  msgeq7->begin();
+  led_disp->begin();
+  led_disp->ref_data_range(50, 1024);
+  led_disp->ref_color_range(BLUE, RED, COLOR_DIFF_LEVEL);
+  
+  #ifdef USE_LCD
     MCUFRIEND_kbv tft;
     tft.reset();
     uint16_t identifier = tft.readID();
@@ -17,53 +28,24 @@ void setup(){
     tft.setCursor(10,10);
     tft.setTextSize(3);  
   #endif
+
+  msgeq7 -> monitor_t();
   
-  #ifdef ONE_WIRE_LED
-    // led_wire.begin();
-  #else
-    led_band_1.begin();
-    led_band_2.begin();
-    led_band_3.begin();
-    led_band_4.begin();
-    led_band_5.begin();
-  #endif
-  // MSGEQ7 setup
-  pinMode       (STROBE, OUTPUT);
-  pinMode       (RESET, OUTPUT);
-  pinMode       (MSGEQ7_DATA, INPUT);
-  // MSGEQ7 init
-  digitalWrite  (RESET, HIGH);
-  delay(1);
-  digitalWrite  (RESET, LOW);
-  digitalWrite  (STROBE, HIGH);
-  delay(1);
 }
 
+uint16_t data[5];
 void loop(){
-  // led_band_1.clear();
-  // led_band_2.clear();
-  // led_band_3.clear();
-  // led_band_4.clear();
-  // led_band_5.clear();
+  led_disp->clear();
+  led_disp->setBrightness(BRIGHTNESS);
 
-  // led_band_1.setBrightness(BRIGHTNESS);
-  // led_band_2.setBrightness(BRIGHTNESS);
-  // led_band_3.setBrightness(BRIGHTNESS);
-  // led_band_4.setBrightness(BRIGHTNESS);
-  // led_band_5.setBrightness(BRIGHTNESS);
+  msgeq7->read();
+  data[0] = msgeq7->getData(0);
 
-  for (int i = 0; i < BAND; i++){
-    digitalWrite      (STROBE, LOW);
-    delayMicroseconds (100);
-    spectrumBand[i] = analogRead(MSGEQ7_DATA);
-    digitalWrite      (STROBE, HIGH);
-    delayMicroseconds (1);
-  }
+  led_disp->run();
+  // led_disp->run()
 
-  // for (int i = 0; i < 5; i++){
-  //   Serial.print(spectrumBand[i]);
-  //   Serial.print("   ");
-  // }
+
+
 
   // double bandd = double(spectrumBand[i]) / double(1024.00);
   // Serial.print("bandd: ");

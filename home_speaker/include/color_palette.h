@@ -63,7 +63,7 @@
 #define DBlueGrey       0x63AF      // 97, 116, 126
 
 // RGB 32 bit, LED WS2818
-#define BLUE            0X2196f3
+#define BLUE            0X2196F3
 #define RED             0xF44336
 
 /*
@@ -73,27 +73,27 @@ color.value = Red;
 color.color(color.rgb.R, color.rgb.G, color.rgb.B)
 bug blue color always 0
 */
-struct RGB_COLOR {
-    byte R;
-    byte G;
-    byte B;
-    byte A;
-};
+// struct RGB_COLOR {
+//     byte R;
+//     byte G;
+//     byte B;
+//     byte A;
+// };
 
-union COLOR{
-    RGB_COLOR rgb;
-    unsigned int value;
-} color;
+// union COLOR{
+//     RGB_COLOR rgb;
+//     unsigned int value;
+// } color;
 
 /*
 Convert hex color to RGB
 */
-uint8_t getRed(uint32_t c){
-    return c >> 16;
-}
-uint8_t getGreen(uint32_t c){
-    return c >> 8;
-}
-uint8_t getBlue(uint32_t c){
-    return c;
-}
+// uint8_t getRed(uint32_t c){
+//     return c >> 16;
+// }
+// uint8_t getGreen(uint32_t c){
+//     return c >> 8;
+// }
+// uint8_t getBlue(uint32_t c){
+//     return c;
+// }

@@ -1,53 +1,13 @@
 #include <Arduino.h>
-#include <WS2818.h>
-#ifdef __AVR__
-    #include <avr/power.h> // Required for 16 MHz Adafruit Trinket
-#endif
-#ifdef __USE_LCD__
-    #include <Wire.h>
-    #include <Adafruit_GFX.h> 
-    #include <MCUFRIEND_kbv.h>
-    //  Only for MEGA
-    //	MCUFRIEND_kbv(int CS=A3, int RS=A2, int WR=A1, int RD=A0, int RST=A4); A0-A4 is used
-    //  digital pwm used for lcd(D2-D7=2-7, D0=8, d1=9), used for SD (SS=10, DI=11, DO=12, SCK=13)
-    //  MSGEQ7
-    #define STROBE      22
-    #define RESET       23
-    //  WS2812
-    // #define LEDC1       24
-    // #define LEDC2       25
-    // #define LEDC3       26
-    // #define LEDC4       27
-    // #define LEDC5       28
-    //  Analog
-    #define MSGEQ7_DATA 59 // A5
-#else
-    //  MSGEQ7
-    #define STROBE      2
-    #define RESET       3
-    //  WS2812
-    // #define LEDC1       4
-    // #define LEDC2       5
-    // #define LEDC3       6
-    // #define LEDC4       7
-    // #define LEDC5       8
-    #ifdef ARDUINO_AVR_UNO
-        #define MSGEQ7_DATA 14 // A0
-    #elif ARDUINO_AVR_MEGA2560
-        #define MSGEQ7_DATA 54 // A0
-    #endif
-    #define DUMMY_TFT TFT
-#endif
+#include <Spectrum_Analyzer.h>
+
 
 #include <math.h>
 #include <color_palette.h>
 #include <definition.h>
 
-Sled spectrum_led(6);
 
-// WS2818 *spectrum_display;
 
-// Adafruit_NeoPixel Led_Array[BAND] = {led_band_1, led_band_2, led_band_3, led_band_4, led_band_5};
 
 // void color_monitor(uint8_t color_value){
 //     COLOR_MONITOR.value = color_value;
