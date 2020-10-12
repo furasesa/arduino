@@ -36,5 +36,6 @@ Global Definition. public setting
 
 // WS2818
 #define BRIGHTNESS          10
-#define NUM_PIXELS          5
+#define LED_IN_ROW          5
+#define NUM_PIXELS          BAND * LED_IN_ROW
 #define DELAY_VALUE         500     // Time (in milliseconds) to pause between pixels

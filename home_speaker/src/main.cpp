@@ -30,7 +30,7 @@ void setup(){
   #endif
 
   msgeq7 -> monitor_t();
-  
+  led_disp -> pin_check(led_disp->getPin());
 }
 
 uint16_t data[5];
@@ -38,8 +38,15 @@ void loop(){
   led_disp->clear();
   led_disp->setBrightness(BRIGHTNESS);
 
-  msgeq7->read();
-  data[0] = msgeq7->getData(0);
+  for (int i = 0; i < BAND; i++){
+    data[i] = msgeq7->read(i);
+  }
+
+  for (int i = 0; i < BAND; i++){
+    led_disp->run(i, data[i]);
+  }
+
+
 
   // led_disp->run();
   // led_disp->run()
