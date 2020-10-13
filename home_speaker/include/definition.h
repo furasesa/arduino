@@ -30,9 +30,12 @@ Global Definition. public setting
     #endif
 #endif
 
+//MSGEQ7
 #define BAND                5       // MSGEQ7 band spectrum
+#define MIN_SPECTRUM_VALUE  30
 #define MAX_SPECTRUM_VALUE  1024
 #define COLOR_DIFF_LEVEL    6       // 6 color step for range 0 - 1024
+
 
 // WS2818
 #define BRIGHTNESS          10

@@ -1,14 +1,6 @@
 #include <Arduino.h>
 #include <Spectrum_Analyzer.h>
 
-
-#include <math.h>
-#include <color_palette.h>
-#include <definition.h>
-
-
-
-
 // void color_monitor(uint8_t color_value){
 //     COLOR_MONITOR.value = color_value;
 //     Serial.println("");
