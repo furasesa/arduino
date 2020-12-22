@@ -8,6 +8,7 @@
             "includePath": [
                 "/home/furasesa/Development/arduino/electroplating/include",
                 "/home/furasesa/Development/arduino/electroplating/src",
+                "/home/furasesa/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
                 "/home/furasesa/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/config",
                 "/home/furasesa/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/app_trace",
                 "/home/furasesa/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/app_update",
@@ -89,7 +90,6 @@
                 "/home/furasesa/.platformio/packages/framework-arduinoespressif32/libraries/Ticker/src",
                 "/home/furasesa/.platformio/packages/framework-arduinoespressif32/libraries/Update/src",
                 "/home/furasesa/.platformio/packages/framework-arduinoespressif32/libraries/WebServer/src",
-                "/home/furasesa/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
                 "/home/furasesa/.platformio/packages/framework-arduinoespressif32/libraries/WiFiClientSecure/src",
                 "/home/furasesa/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
                 "/home/furasesa/.platformio/packages/tool-unity",
@@ -100,6 +100,7 @@
                 "path": [
                     "/home/furasesa/Development/arduino/electroplating/include",
                     "/home/furasesa/Development/arduino/electroplating/src",
+                    "/home/furasesa/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
                     "/home/furasesa/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/config",
                     "/home/furasesa/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/app_trace",
                     "/home/furasesa/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/app_update",
@@ -181,7 +182,6 @@
                     "/home/furasesa/.platformio/packages/framework-arduinoespressif32/libraries/Ticker/src",
                     "/home/furasesa/.platformio/packages/framework-arduinoespressif32/libraries/Update/src",
                     "/home/furasesa/.platformio/packages/framework-arduinoespressif32/libraries/WebServer/src",
-                    "/home/furasesa/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
                     "/home/furasesa/.platformio/packages/framework-arduinoespressif32/libraries/WiFiClientSecure/src",
                     "/home/furasesa/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
                     "/home/furasesa/.platformio/packages/tool-unity",
