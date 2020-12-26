@@ -2,6 +2,7 @@
 #include "SPI.h"
 #include "Wire.h"
 #include "pins.h"
+#include "selector.h"
 
 // U8G2_SSD1306_128X64_NONAME_F_4W_SW_SPI u8g2(U8G2_R0, /* clock=*/ 14, /*
 // data=*/ 12, /* cs=*/ 25, /* dc=*/ 26, /* reset=*/ 27);
@@ -16,10 +17,12 @@ class SSD1306 : public U8G2_SSD1306_128X64_NONAME_F_4W_SW_SPI {
         uint8_t dc      = DC,
         uint8_t reset   = RESET
     );
-    void start(void);
+    void setup();
+    void start();
 
     private:
     void setContent(uint8_t row, String content);
+    
     uint8_t _clock_pin;
     uint8_t _data_pin;
     uint8_t _cs_pin;
@@ -32,6 +35,8 @@ class SSD1306 : public U8G2_SSD1306_128X64_NONAME_F_4W_SW_SPI {
 
     uint8_t max_title_length = lcd_w-(4*margin);
     uint8_t max_content_length = lcd_w-(2*margin);
-    char title_char[];
+
+    String switchPrint;
+    String rotaryValue;
     char content_char[];
 };

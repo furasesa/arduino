@@ -1,7 +1,5 @@
 #include "Arduino.h"
-#include "AiEsp32RotaryEncoder.h"
 // #include "WiFi.h"
-
 #include "WiFiMulti.h"
 #include "screen_manager.h"
 
@@ -102,8 +100,7 @@ SSD1306 *ssd1306;
 void setup(){
   Serial.begin(115200);
   ssd1306 = new SSD1306();
-
-  ssd1306->begin();
+  ssd1306->setup();
 }
 
 void loop(){

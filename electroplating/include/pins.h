@@ -3,3 +3,7 @@
 #define CS 25
 #define DC 26
 #define RESET 27
+#define ROTARY_ENCODER_A_PIN 2
+#define ROTARY_ENCODER_B_PIN 4
+#define ROTARY_ENCODER_BUTTON_PIN 15
+// #define ROTARY_ENCODER_VCC_PIN 27
