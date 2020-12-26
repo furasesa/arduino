@@ -1,82 +1,83 @@
 #include "selector.h"
 
 Selector::Selector(
-    uint8_t A, uint8_t B, uint8_t SW ) : AiEsp32RotaryEncoder (A, B, SW) {
-    // no-op
-}
+    uint8_t A, uint8_t B, uint8_t SW ) : AiEsp32RotaryEncoder (A, B, SW) {}
 
-void Selector::listenEncoder(){
-    //lets see if anything changed
-	int16_t encoderDelta = encoderChanged();
-    if (currentButtonState() == BUT_RELEASED) swState = !swState;
-	// if value is changed compared to our last read
-	if (encoderDelta != 0) {
-        encoderValue =  readEncoder();
-        // +value to up and counter+, 0 is steady, viceversa
+// function
+void Selector::listenEncoderChanges(){ 
+    // set encoderDelta
+    encoderDelta = encoderChanged();
+
+    // Button and Toggle function
+    if (currentButtonState() == BUT_RELEASED) {
+        buttonPressed = true;
+        toggleState = !toggleState;
+    } else buttonPressed = false;
+    if (encoderDelta != 0) { // + (cw) or - (ccw)
+        encoderValue = readEncoder();
         // cw changes
         if (encoderDelta > 0){
             counter += 1;
             movement = 1;
         // ccw changes
         } else if (encoderDelta < 0){
-            counter -= 1;
             movement = -1;
-        
+            counter -= 1;
         }
-    //no rotation
-    } else movement = 0;
+    } else movement = 0; // steady
 }
 
-bool newSwState;
-bool Selector::getSwitchState(){
-    if (newSwState != swState){
-        Serial.print("switch state: ");
-        Serial.println(swState);
-        newSwState = swState;
-        return newSwState;
+// Debugger
+int16_t encoderValueTest;
+bool    toggleStateTest;
+int16_t counterTest;
+int8_t  movementTest;
+
+void Selector::debugEncoderValue(){
+    if (encoderValueTest != encoderValue){
+        encoderValueTest = encoderValue;
+        Serial.print("EncoderVal :");
+        Serial.println(encoderValue);
     }
-    return swState;
 }
 
-int8_t newMovement;
-int8_t Selector::getMovement(){
-    // print movement
-    if (newMovement != movement) {
-        newMovement = movement;
-        if (newMovement > 0){
-            Serial.println("movement: up");
-        } else if (newMovement < 0) {
-            Serial.println("movement: down");
-        } else if (newMovement == 0) {
-            Serial.println("movement: steady");
-        }
-        return newMovement;
+void Selector::debugButtonSwitch(){
+    if (buttonPressed) Serial.println("button clicked");
+}
+
+void Selector::debugToggleState(){
+    if (toggleStateTest != toggleState){
+        Serial.print("Button State: ");
+        Serial.println(toggleState);
+        toggleStateTest = toggleState;
     }
-    return movement;
+    
 }
 
-
-int16_t newCounter;
-int16_t Selector::getCounter() {
-    // print counter
-    if (newCounter != counter) {
+void Selector::debugCounter(){
+    if (counterTest != counter) {
         Serial.print("counter: ");
         Serial.println(counter);
-        newCounter = counter;
-        return newCounter;
+        counterTest = counter;
     }
-    return counter;
 }
 
-int16_t newEncoderValue;
-int16_t Selector::getEncoderValue(){
-    if (newEncoderValue != encoderValue){
-        Serial.print("encoder value: ");
-        Serial.println(encoderValue);
-        newEncoderValue = encoderValue;
-        return newEncoderValue;
+void Selector::debugMovement(){
+    if (movementTest != movement) {
+        if (movement > 0){
+            Serial.println("movement: up");
+        } else if (movement < 0) {
+            Serial.println("movement: down");
+        } else if (movement == 0) {
+            Serial.println("movement: steady");
+        }
+        movementTest = movement;
     }
-    return encoderValue;
 }
-
-
+void Selector::debugAll(){
+    debugButtonSwitch();
+    debugToggleState();
+    debugEncoderValue();
+    debugCounter();
+    debugMovement();
+}

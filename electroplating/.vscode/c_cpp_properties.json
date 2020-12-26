@@ -199,6 +199,8 @@
             "defines": [
                 "PLATFORMIO=50003",
                 "ARDUINO_ESP32_DEV",
+                "VERSION=0.0.1",
+                "DEBUG=1",
                 "ESP32",
                 "ESP_PLATFORM",
                 "F_CPU=240000000L",

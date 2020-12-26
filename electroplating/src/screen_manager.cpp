@@ -1,8 +1,4 @@
 #include "screen_manager.h"
-#include "U8g2lib.h"
-#include "SPI.h"
-#include "Wire.h"
-#include "pins.h"
 
 Selector *selector;
 /*
@@ -27,7 +23,8 @@ void SSD1306::setup(){
   selector = new Selector();
   selector->begin();
   selector->setup([]{selector->readEncoder_ISR();});
-  selector->setBoundaries(-100, 100, true);
+  selector->setBoundaries(0, 1000, false);
+  setFont(u8g2_font_mercutio_basic_nbp_tf);
   begin();
 }
 
@@ -36,25 +33,62 @@ void SSD1306::setup(){
   @param   uint8_t row. y= row*15
   @param   String content
 */
-void SSD1306::setContent(uint8_t row, String content){
-    setFont(u8g2_font_mercutio_basic_nbp_tf); //10pxh
-    content.toCharArray(content_char, max_content_length);
-    u8g2_uint_t y = row*15;
-    drawStr(margin, y, content_char);
+void SSD1306::setContent( uint8_t column, uint8_t row, String content){
+    // setFont(u8g2_font_mercutio_basic_nbp_tf); //10pxh
+    int content_length = content.length() + 3;
+    content.toCharArray(charContent, content_length);
+    u8g2_uint_t x = 10+(column-1)*getDisplayWidth()/2;
+    u8g2_uint_t y = 15+(row*15);
+    drawStr(x, y, charContent);
 }
+
+// String  strContent10     = "";
+// char    charContent10[]  = "";
+// String  strContent11     = "";
+// char    charContent11[]  = "";
+
+
+// void SSD1306::draw(const char*t, const char *s){
+//   firstPage();
+//   do {
+//     drawStr(10,10,t);
+//     drawHLine(0,15, 128);
+//     drawStr(0,30,s);    
+//     drawFrame(0,0,getDisplayWidth(),getDisplayHeight() );
+//   } while ( nextPage() );
+//   delay(500);
+// }
 
 void SSD1306::start(){
     clearBuffer();
-    selector->listenEncoder();
-    selector->getSwitchState();
-    selector->getMovement();
-    selector->getCounter();
-    selector->getEncoderValue();
-    // rotaryValue = selector->getEncoderValue();
-    // switchPrint = selector->getSwitchState();
-    setContent(1, "Content 1"); //15
-    setContent(2, "Content 2"); //30
-    setContent(3, "Content 3"); //45
-    setContent(4, "Content 4"); //60 
+
+    selector->listenEncoderChanges();
+
+    drawStr(10,10,"HOME");
+    drawHLine(0,15, 128);
+    // Content
+    if (selector->toggleState) {
+      // button pressed
+      setContent(1,1, "Counter");
+      setContent(2,1, String(selector->counter));
+      // strContent10 = "Counter: ";
+      // strContent11 = String(selector->encoderValue);
+    } else {
+      setContent(1,1, "Encoder");
+      setContent(2,1, String(selector->encoderValue));
+      // strContent10 = "Encoder: ";
+      // strContent11 = String(selector->encoderValue);
+    }
+    // strContent10.toCharArray(charContent10, 10);
+    // strContent11.toCharArray(charContent11, 4);
+    // draw("STATUS", charContent1);
+    // drawStr(10, 30, charContent10);
+    // drawStr(75, 30, charContent11);
+
+    #ifdef DEBUG
+    selector->debugAll();
+    #endif
+    drawFrame(0,0,getDisplayWidth(),getDisplayHeight() );
     sendBuffer();
+    // delay(100);
 }

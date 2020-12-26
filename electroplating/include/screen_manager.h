@@ -21,22 +21,9 @@ class SSD1306 : public U8G2_SSD1306_128X64_NONAME_F_4W_SW_SPI {
     void start();
 
     private:
-    void setContent(uint8_t row, String content);
-    
-    uint8_t _clock_pin;
-    uint8_t _data_pin;
-    uint8_t _cs_pin;
-    uint8_t _dc_pin;
-    uint8_t _reset_pin;
+    void draw(const char *t, const char *s);
+    void setContent(uint8_t column, uint8_t row, String content);
 
-    uint8_t lcd_w = 128;
-    uint8_t lcd_h = 64;
-    u8g2_uint_t margin = 10; //margin
-
-    uint8_t max_title_length = lcd_w-(4*margin);
-    uint8_t max_content_length = lcd_w-(2*margin);
-
-    String switchPrint;
-    String rotaryValue;
-    char content_char[];
+    char charContent[];
+  
 };

@@ -51,16 +51,22 @@ class Selector : public AiEsp32RotaryEncoder {
         uint8_t SW  = ROTARY_ENCODER_BUTTON_PIN
         );
     
-    void    listenEncoder();
-    bool    getSwitchState();
-    int8_t  getMovement();
-    int16_t getCounter();
-    int16_t getEncoderValue();
-    
+    // void    listenEncoder();
+    void    listenEncoderChanges();
 
-    private:
-    bool    swState     = false;
-    int8_t  movement    = 0;
-    int16_t counter     = 0;
-    int16_t encoderValue = 0;
+    // debug rotary encoder
+    void    debugEncoderValue();
+    void    debugButtonSwitch();
+    void    debugToggleState();
+    void    debugCounter();
+    void    debugMovement();
+    void    debugAll();
+
+    // private: 
+    bool    buttonPressed   = false;
+    bool    toggleState     = false;
+    int8_t  movement        = 0;
+    int16_t counter         = 0;
+    int16_t encoderValue    = 0;
+    int16_t encoderDelta    = 0;
 };
