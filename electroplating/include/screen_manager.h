@@ -4,6 +4,8 @@
 #include "pins.h"
 #include "selector.h"
 
+
+
 // U8G2_SSD1306_128X64_NONAME_F_4W_SW_SPI u8g2(U8G2_R0, /* clock=*/ 14, /*
 // data=*/ 12, /* cs=*/ 25, /* dc=*/ 26, /* reset=*/ 27);
 
@@ -21,8 +23,20 @@ class SSD1306 : public U8G2_SSD1306_128X64_NONAME_F_4W_SW_SPI {
     void start();
 
     private:
-    void draw(const char *t, const char *s);
+    u8g2_uint_t designWidth();
+    u8g2_uint_t designHeight();
+    uint8_t menuInterface();
+    // void TimerDisplay();
+    // void draw(const char *t, const char *s);
+    void rectPointer(uint8_t row);
     void setContent(uint8_t column, uint8_t row, String content);
+
+    bool    is_Timer    = false;
+    bool    is_Auto     = false;
+
+    uint8_t hour    = 0;
+    uint8_t minute  = 0;
+    uint8_t second  = 0;
 
     char charContent[];
   
