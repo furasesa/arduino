@@ -1,16 +1,18 @@
+//
+// !!! WARNING !!! AUTO-GENERATED FILE!
+// PLEASE DO NOT MODIFY IT AND USE "platformio.ini":
+// https://docs.platformio.org/page/projectconf/section_env_build.html#build-flags
+//
 {
     "configurations": [
         {
-            "name": "!!! WARNING !!! AUTO-GENERATED FILE, PLEASE DO NOT MODIFY IT AND USE https://docs.platformio.org/page/projectconf/section_env_build.html#build-flags"
-        },
-        {
-            "name": "Linux",
+            "name": "PlatformIO",
             "includePath": [
-                "/home/furasesa/Development/arduino/electroplating/include",
-                "/home/furasesa/Development/arduino/electroplating/src",
+                "/home/furasesa/development/arduino/electroplating/include",
+                "/home/furasesa/development/arduino/electroplating/src",
                 "/home/furasesa/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
-                "/home/furasesa/Development/arduino/electroplating/.pio/libdeps/esp32doit-devkit-v1/Ai Esp32 Rotary Encoder/src",
-                "/home/furasesa/Development/arduino/electroplating/.pio/libdeps/esp32doit-devkit-v1/U8g2/src",
+                "/home/furasesa/development/arduino/electroplating/.pio/libdeps/esp32doit-devkit-v1/Ai Esp32 Rotary Encoder/src",
+                "/home/furasesa/development/arduino/electroplating/.pio/libdeps/esp32doit-devkit-v1/U8g2/src",
                 "/home/furasesa/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
                 "/home/furasesa/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src",
                 "/home/furasesa/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/config",
@@ -71,8 +73,6 @@
                 "/home/furasesa/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/fb_gfx",
                 "/home/furasesa/.platformio/packages/framework-arduinoespressif32/cores/esp32",
                 "/home/furasesa/.platformio/packages/framework-arduinoespressif32/variants/doitESP32devkitV1",
-                "/home/furasesa/Development/arduino/electroplating/lib/u8g2",
-                "/home/furasesa/Development/arduino/electroplating/.pio/libdeps/esp32doit-devkit-v1/U8glib/src",
                 "/home/furasesa/.platformio/packages/framework-arduinoespressif32/libraries/ArduinoOTA/src",
                 "/home/furasesa/.platformio/packages/framework-arduinoespressif32/libraries/AsyncUDP/src",
                 "/home/furasesa/.platformio/packages/framework-arduinoespressif32/libraries/AzureIoT/src",
@@ -102,11 +102,11 @@
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
-                    "/home/furasesa/Development/arduino/electroplating/include",
-                    "/home/furasesa/Development/arduino/electroplating/src",
+                    "/home/furasesa/development/arduino/electroplating/include",
+                    "/home/furasesa/development/arduino/electroplating/src",
                     "/home/furasesa/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
-                    "/home/furasesa/Development/arduino/electroplating/.pio/libdeps/esp32doit-devkit-v1/Ai Esp32 Rotary Encoder/src",
-                    "/home/furasesa/Development/arduino/electroplating/.pio/libdeps/esp32doit-devkit-v1/U8g2/src",
+                    "/home/furasesa/development/arduino/electroplating/.pio/libdeps/esp32doit-devkit-v1/Ai Esp32 Rotary Encoder/src",
+                    "/home/furasesa/development/arduino/electroplating/.pio/libdeps/esp32doit-devkit-v1/U8g2/src",
                     "/home/furasesa/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
                     "/home/furasesa/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src",
                     "/home/furasesa/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/config",
@@ -167,8 +167,6 @@
                     "/home/furasesa/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/fb_gfx",
                     "/home/furasesa/.platformio/packages/framework-arduinoespressif32/cores/esp32",
                     "/home/furasesa/.platformio/packages/framework-arduinoespressif32/variants/doitESP32devkitV1",
-                    "/home/furasesa/Development/arduino/electroplating/lib/u8g2",
-                    "/home/furasesa/Development/arduino/electroplating/.pio/libdeps/esp32doit-devkit-v1/U8glib/src",
                     "/home/furasesa/.platformio/packages/framework-arduinoespressif32/libraries/ArduinoOTA/src",
                     "/home/furasesa/.platformio/packages/framework-arduinoespressif32/libraries/AsyncUDP/src",
                     "/home/furasesa/.platformio/packages/framework-arduinoespressif32/libraries/AzureIoT/src",
@@ -197,7 +195,7 @@
                 ]
             },
             "defines": [
-                "PLATFORMIO=50003",
+                "PLATFORMIO=50004",
                 "ARDUINO_ESP32_DEV",
                 "VERSION=0.0.1",
                 "DEBUG=1",
@@ -212,7 +210,6 @@
                 "ARDUINO_BOARD=\"DOIT ESP32 DEVKIT V1\"",
                 ""
             ],
-            "intelliSenseMode": "gcc-x64",
             "cStandard": "c99",
             "cppStandard": "c++11",
             "compilerPath": "/home/furasesa/.platformio/packages/toolchain-xtensa32/bin/xtensa-esp32-elf-gcc",
