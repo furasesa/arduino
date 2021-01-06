@@ -1,8 +1,8 @@
-#define CLOCK 14
+#define CLK 14
 #define DATA 12
 #define CS 25
 #define DC 26
-#define RESET 27
+#define RST 27
 #define ROTARY_ENCODER_A_PIN 2
 #define ROTARY_ENCODER_B_PIN 4
 #define ROTARY_ENCODER_BUTTON_PIN 15
